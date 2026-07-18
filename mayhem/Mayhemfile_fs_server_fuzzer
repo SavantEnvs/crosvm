@@ -1,0 +1,5 @@
+project: savantenvs/crosvm
+target: fs_server_fuzzer
+cmds:
+  - cmd: /mayhem/fs_server_fuzzer
+    libfuzzer: true

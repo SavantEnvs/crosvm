@@ -1,0 +1,5 @@
+project: savantenvs/crosvm
+target: block_fuzzer
+cmds:
+  - cmd: /mayhem/block_fuzzer
+    libfuzzer: true

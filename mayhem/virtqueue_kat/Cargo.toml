@@ -1,0 +1,33 @@
+# Known-answer tests for crosvm's split virtqueue (the avail -> pop -> used path that
+# virtqueue_fuzzer drives). Run by mayhem/test.sh; see the header there for why they exist.
+[package]
+name = "virtqueue_kat"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+# Its own workspace root: crosvm's root [workspace] lists its members explicitly, and that file
+# is upstream's (the Mayhem layer never edits it).
+[workspace]
+
+# The library is an empty shell (cargo needs one target besides tests/); only tests/ runs.
+[lib]
+path = "src/lib.rs"
+test = false
+doctest = false
+
+[dependencies]
+base = { path = "../../base" }
+devices = { path = "../../devices" }
+# Not used by the tests directly. It mirrors crosvm-fuzz's `[features] default = ["disk/qcow"]`
+# (fuzz/Cargo.toml), so every crate this graph shares with the graded fuzz build resolves the same
+# feature set. devices depends on disk, so a disk-feature split would otherwise be visible from the
+# virtqueue code (e.g. a `cfg!(feature = "qcow")` flag exported by disk and read in SplitQueue).
+disk = { path = "../../disk", features = ["qcow"] }
+vm_memory = { path = "../../vm_memory" }
+
+# Mirror of the root workspace's [patch.crates-io] (patches only apply from a workspace root).
+# libcras is omitted: nothing in this crate graph uses it.
+[patch.crates-io]
+audio_streams = { path = "../../common/audio_streams" }
+minijail = { path = "../../third_party/minijail/rust/minijail" }

@@ -1,0 +1,5 @@
+project: savantenvs/crosvm
+target: usb_descriptor_fuzzer
+cmds:
+  - cmd: /mayhem/usb_descriptor_fuzzer
+    libfuzzer: true

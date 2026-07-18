@@ -1,0 +1,5 @@
+project: savantenvs/crosvm
+target: qcow_fuzzer
+cmds:
+  - cmd: /mayhem/qcow_fuzzer
+    libfuzzer: true

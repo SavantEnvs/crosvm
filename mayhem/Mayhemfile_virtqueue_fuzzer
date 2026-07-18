@@ -1,0 +1,5 @@
+project: savantenvs/crosvm
+target: virtqueue_fuzzer
+cmds:
+  - cmd: /mayhem/virtqueue_fuzzer
+    libfuzzer: true

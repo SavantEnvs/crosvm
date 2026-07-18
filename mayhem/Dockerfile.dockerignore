@@ -1,0 +1,12 @@
+# BuildKit uses mayhem/Dockerfile.dockerignore in preference to the root .dockerignore
+# when building with -f mayhem/Dockerfile. The root .dockerignore excludes .git (line ".git"),
+# which would strip git history from the image — breaking the grader and PATCH tier (§6.2 item 2).
+# This override re-includes .git while keeping the other root exclusions (docker/, target/, etc.).
+
+# Re-include .git explicitly — the root .dockerignore drops it.
+!.git
+
+# Exclude large build artifacts not needed in the image context
+target
+*/*/target
+docker

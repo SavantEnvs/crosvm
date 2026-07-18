@@ -1,0 +1,4 @@
+# mayhem/test.sh copies the root Cargo.lock here before every run (so this crate always resolves
+# to exactly the versions the root workspace pins); it is generated, not committed.
+/Cargo.lock
+/target/

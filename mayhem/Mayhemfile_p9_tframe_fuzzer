@@ -1,0 +1,5 @@
+project: savantenvs/crosvm
+target: p9_tframe_fuzzer
+cmds:
+  - cmd: /mayhem/p9_tframe_fuzzer
+    libfuzzer: true

@@ -1,0 +1,5 @@
+project: savantenvs/crosvm
+target: zimage_fuzzer
+cmds:
+  - cmd: /mayhem/zimage_fuzzer
+    libfuzzer: true

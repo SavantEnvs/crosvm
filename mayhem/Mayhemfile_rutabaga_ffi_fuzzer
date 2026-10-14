@@ -1,0 +1,5 @@
+project: savantenvs/crosvm
+target: rutabaga_ffi_fuzzer-mined-948c504
+cmds:
+  - cmd: /mayhem/rutabaga_ffi_fuzzer
+    libfuzzer: true
